@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=UnitedSciFi
+Comment=UnitedSciFi P2P Cryptocurrency
+Comment[ru]=UnitedSciFi, P2P криптовалюта
+Comment[fr]=UnitedSciFi, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=UnitedSciFi, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/unitedscifi-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/unitedscifi80.xpm
+MimeType=x-scheme-handler/unitedscifi;
+Categories=Office;

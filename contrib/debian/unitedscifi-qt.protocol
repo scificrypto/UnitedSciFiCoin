@@ -1,0 +1,11 @@
+[Protocol]
+exec=unitedscifi-qt '%u'
+protocol=unitedscifi
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

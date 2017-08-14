@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+
+DEB_INSTALL_EXAMPLES_unitedscifid += debian/examples/*
+DEB_INSTALL_MANPAGES_unitedscifid += debian/manpages/*
+
+%:
+	dh --with bash-completion $@
+
+override_dh_auto_build:
+	cd src; $(MAKE) -f makefile.unix unitedscifid USE_ASM=1 USE_LEVELDB=1
+	$(MAKE)
+
+override_dh_auto_clean:
+	if [ -f Makefile ]; then $(MAKE) clean; else rm -rf build/; rm -f unitedscifi-qt; fi
+	cd src; $(MAKE) -f makefile.unix clean
+
+override_dh_auto_configure:
+	qmake unitedscifi-qt.pro USE_ASM=1 USE_LEVELDB=1
+
+# Ensure wrapper is set executable
+binary-post-install/unitedscifid:
+	chmod +x $(cdbs_curdestdir)usr/bin/unitedscifid
+binary-post-install/unitedscifi-qt:
+	chmod +x $(cdbs_curdestdir)usr/bin/unitedscifi-qt

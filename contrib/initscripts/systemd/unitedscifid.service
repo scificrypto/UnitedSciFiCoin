@@ -1,0 +1,11 @@
+[Unit]
+Description=unitedscifi daemon serivce
+After=network.target
+
+[Service]
+Type=simple
+User=unitedscifi
+ExecStart=/opt/unitedscifi/unitedscifid
+
+[Install]
+WantedBy=multi-user.target

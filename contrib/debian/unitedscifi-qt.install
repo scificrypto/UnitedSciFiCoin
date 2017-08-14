@@ -1,0 +1,5 @@
+unitedscifi-qt usr/bin
+share/pixmaps/unitedscifi32.xpm usr/share/pixmaps
+share/pixmaps/unitedscifi80.xpm usr/share/pixmaps
+debian/unitedscifi-qt.desktop usr/share/applications
+debian/unitedscifi-qt.protocol usr/share/kde4/services/
