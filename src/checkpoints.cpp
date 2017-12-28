@@ -20,15 +20,15 @@ namespace Checkpoints
     //
     // What makes a good checkpoint block?
     // + Is surrounded by blocks with reasonable timestamps
-    //   (no blocks before with a timestamp after, none after with
-    //    timestamp before)
+    //   (no blocks before with a timestamp after, none after with timestamp before)
     // + Contains no strange transactions
     //
     static MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-        ( 0,     std::make_pair(hashGenesisBlock, 1501545600) )
-        ( 1, std::make_pair(uint256("0x0000009a5db93c13715caa647ffbd66ad41c9e25f830aaa266415fa8e148fb93"), 1501797947) )
-       ( 20, std::make_pair(uint256("0x00000010c4cf620e7ba7cfd5368be60e4827e797e6c54453f1b78bdf5b73e168"), 1501799489) )
+        ( 0,      std::make_pair(hashGenesisBlock, 1501545600) )
+        ( 1,      std::make_pair(uint256("0x0000009a5db93c13715caa647ffbd66ad41c9e25f830aaa266415fa8e148fb93"), 1501797947) )
+        ( 20,     std::make_pair(uint256("0x00000010c4cf620e7ba7cfd5368be60e4827e797e6c54453f1b78bdf5b73e168"), 1501799489) )
+        ( 85400,  std::make_pair(uint256("0x000000008b37eb2600239343010b65b0a1f18851bfa6f9bd7fbe69aec742e8e8"), 1514364938) )
 
     ;
 
