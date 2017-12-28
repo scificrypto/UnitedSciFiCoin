@@ -1356,7 +1356,7 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
 
     // Ignore duplicates
     static set<CNetAddr> setKnown;
-    if (!setKnown.insert(ip).second)
+    if (!setKnown.insert(ip).second || (abs64(nOffsetSample) > 7 * 60))
         return;
 
     // Add data
@@ -1367,7 +1367,7 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
         int64_t nMedian = vTimeOffsets.median();
         std::vector<int64_t> vSorted = vTimeOffsets.sorted();
         // Only let other nodes change our time by so much
-        if (abs64(nMedian) < 70 * 60)
+        if (abs64(nMedian) < 7 * 60)
         {
             nNodesOffset = nMedian;
         }
