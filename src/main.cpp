@@ -3301,7 +3301,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
                 printf("  got inventory: %s  %s\n", inv.ToString().c_str(), fAlreadyHave ? "have" : "new");
 
             if (!fAlreadyHave)
-                pfrom->AskFor(inv, IsInitialBlockDownload()); // immediate retry during initial download
+                pfrom->AskFor(inv); //, IsInitialBlockDownload()); // immediate retry during initial download
             else if (inv.type == MSG_BLOCK && mapOrphanBlocks.count(inv.hash)) {
                 pfrom->PushGetBlocks(pindexBest, GetOrphanRoot(mapOrphanBlocks[inv.hash]));
             } else if (nInv == nLastBlock) {
