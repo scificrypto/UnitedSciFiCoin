@@ -684,7 +684,7 @@ void ThreadStakeMiner(void* parg)
                     goto _endloop; // Don't be afraid to use a goto if that's the best option.
             }
 
-            while (vNodes.empty() || IsInitialBlockDownload() || vNodes.size() < 2 || nBestHeight < GetNumBlocksOfPeers())
+            while (vNodes.empty() || IsInitialBlockDownload() || vNodes.size() < 2 || nBestHeight < GetNumBlocksOfPeers() - 20)
             {
                 //fTrySync = true;
 
