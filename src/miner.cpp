@@ -616,7 +616,7 @@ bool ScanMap(const MidstateMap &inputsMap, uint32_t nBits, MidstateMap::key_type
         // Scanning interval (begintime, endtime)
         std::pair<uint32_t, uint32_t> interval;
 
-        interval.first = nSearchTime;
+        interval.first = nSearchTime + 3;
         interval.second = nSearchTime - min(nSearchTime-nLastCoinStakeSearchTime, nMaxStakeSearchInterval);
 
         // (txid, nout) => (kernel, (tx.nTime, nAmount))
@@ -684,7 +684,7 @@ void ThreadStakeMiner(void* parg)
                     goto _endloop; // Don't be afraid to use a goto if that's the best option.
             }
 
-            while (vNodes.empty() || IsInitialBlockDownload() || vNodes.size() < 2 || nBestHeight < GetNumBlocksOfPeers() - 20)
+            while (vNodes.empty() || IsInitialBlockDownload() || vNodes.size() < 2 || nBestHeight < GetNumBlocksOfPeers() - 10)
             {
                 //fTrySync = true;
 
@@ -742,29 +742,29 @@ void ThreadStakeMiner(void* parg)
                 SetThreadPriority(THREAD_PRIORITY_LOWEST);
                 Sleep(500);
             }
+            
+            Sleep(3000);
 
             if (pindexPrev != pindexBest)
             {
                 if(GetTime() - nLastResetMapTime > 30 * 60) // 30 minute reset time 
                 {
-                    nLastResetMapTime = GetTime();
-                    inputsMap.clear();
+                    if (FillMap(pwallet, GetAdjustedTime(), inputsMap))
+                        nLastResetMapTime = GetTime();
+                    else inputsMap.clear();
                 } 
                 
                 // The best block has been changed, we need to refill the map
-                if (FillMap(pwallet, GetAdjustedTime(), inputsMap))
-                {
+                
+                
                     pindexPrev = pindexBest;
                     nBits = GetNextTargetRequired(pindexPrev, true);
-                }
-                else
-                {
-                    // Clear existent data if FillMap failed
-                    inputsMap.clear();
-                }
+                
+                
+                
             }
 
-            Sleep(500);
+            
 
             _endloop:
                 (void)0; // do nothing
