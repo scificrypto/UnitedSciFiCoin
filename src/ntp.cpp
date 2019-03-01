@@ -463,7 +463,7 @@ void ThreadNtpSamples(void* parg) {
     // Make this thread recognisable as time synchronization thread
     RenameThread("unitedscifi-ntp-samples");
 
-    CMedianFilter<int64_t> vTimeOffsets(200,0);
+    CMedianFilter<int64_t> vTimeOffsets(9,0);
 
     while (!fShutdown) {
         if (strTrustedUpstream != "localhost") {
@@ -488,8 +488,8 @@ void ThreadNtpSamples(void* parg) {
             }
         }
         else {
-            // Now, trying to get 2-4 samples from random NTP servers.
-            int nSamplesCount = 2 + GetRandInt(2);
+            // Now, trying to get 3-5 samples from random NTP servers.
+            int nSamplesCount = 3 + GetRandInt(2);
 
             for (int i = 0; i < nSamplesCount; i++) {
                 CNetAddr ip;
