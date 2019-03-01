@@ -230,7 +230,7 @@ MintingTableModel::MintingTableModel(CWallet *wallet, WalletModel *parent):
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer->start(MODEL_UPDATE_DELAY);
+    timer->start(MINTING_UPDATE_DELAY);
 }
 
 MintingTableModel::~MintingTableModel()
