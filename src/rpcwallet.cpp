@@ -1831,6 +1831,21 @@ Value checkwallet(const Array& params, bool fHelp)
     return result;
 }
 
+Value rescanfromblock(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 1)
+        throw runtime_error(
+            "rescanfromblock <block height>\n"
+            "This will rescan for transactions after a specified block\n");
+    int nHeight = params[0].get_int();
+	if (pwalletMain->IsLocked())
+        throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Unlock wallet to use this feature");
+	if (nHeight > int(nBestHeight) || nHeight < 0)
+		return "out of range";
+		
+	pwalletMain->ScanForWalletTransactions(FindBlockByHeight(nHeight), true);
+	return "done";
+}
 
 // ppcoin: repair wallet
 Value repairwallet(const Array& params, bool fHelp)

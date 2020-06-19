@@ -311,6 +311,7 @@ static const CRPCCommand vRPCCommands[] =
     { "decodescript",               &decodescript,                false,  false },
     { "signrawtransaction",         &signrawtransaction,          false,  false },
     { "sendrawtransaction",         &sendrawtransaction,          false,  false },
+    { "rescanfromblock",            &rescanfromblock,             false,  false },
     { "getcheckpoint",              &getcheckpoint,               true,   false },
     { "reservebalance",             &reservebalance,              false,  true},
     { "checkwallet",                &checkwallet,                 false,  true},
@@ -1247,6 +1248,7 @@ Array RPCConvertValues(const std::string &strMethod, const std::vector<std::stri
     if (strMethod == "listunspent"            && n > 1) ConvertTo<int64_t>(params[1]);
     if (strMethod == "listunspent"            && n > 2) ConvertTo<Array>(params[2]);
     if (strMethod == "getrawtransaction"      && n > 1) ConvertTo<int64_t>(params[1]);
+    if (strMethod == "rescanfromblock"        && n > 0) ConvertTo<int64_t>(params[0]);
     if (strMethod == "createrawtransaction"   && n > 0) ConvertTo<Array>(params[0]);
     if (strMethod == "createrawtransaction"   && n > 1) ConvertTo<Object>(params[1]);
     if (strMethod == "createmultisig"         && n > 0) ConvertTo<int64_t>(params[0]);
