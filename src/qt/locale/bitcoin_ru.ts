@@ -21,13 +21,13 @@ Copyright © 2011-2012 The PPCoin Developers
 Copyright © 2014 The Peerunity Developers
 Copyright © 2014 The EmerCoin Developers
 Copyright © 2012-2016 The NovaCoin developers
-Copyright © 2017-2019 The UnitedSciFiCoin developers</source>
+Copyright © 2017-2020 The UnitedSciFiCoin developers</source>
         <translation>Все права защищены © 2009-2016 Разработчики Bitcoin
 Все права защищены © 2011-2012 Разработчики PPCoin
 Все права защищены © 2014 Разработчики Peerunity
 Все права защищены © 2014 Разработчики EmerCoin
 Все права защищены © 2012-2016 Разработчики NovaCoin
-Все права защищены © 2017-2019 Разработчики UnitedSciFiCoin</translation>
+Все права защищены © 2017-2020 Разработчики UnitedSciFiCoin</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="114"/>
